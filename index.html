@@ -67,6 +67,7 @@
       padding: 20px;
       border-radius: 10px;
       text-align: center;
+      position: relative;
     }
 
     .choice:hover {
@@ -74,13 +75,15 @@
     }
 
     .gift {
-      background-color: #d3d3d3; /* abu-abu */
-      border-radius: 10px;
+      background-image: url('https://i.imgur.com/LAcEu2G.png');
+      background-size: cover;
+      background-position: center;
     }
 
     .letter {
-      background-color: #fff9c4; /* kuning terang */
-      border-radius: 10px;
+      background-image: url('https://i.imgur.com/kGI1QCZ.png');
+      background-size: cover;
+      background-position: center;
     }
 
     .letter-box {
@@ -90,8 +93,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 300px;
-      height: 200px;
+      width: 100%;
+      max-width: 500px;
+      height: 400px;
       background: #fbe9e7;
       border: 2px solid #d6336c;
       border-radius: 10px;
@@ -165,11 +169,9 @@
     <h2>Pilih salah satu ya</h2>
     <div class="choices">
       <div class="choice gift" onclick="openGift()">
-        <img src="https://i.imgur.com/LAcEu2G.png" alt="Kado">
         <p><strong>Open Kado</strong></p>
       </div>
       <div class="choice letter" onclick="openLetter()">
-        <img src="https://i.imgur.com/kGI1QCZ.png" alt="Surat">
         <p><strong>Open Surat</strong></p>
       </div>
     </div>
@@ -178,9 +180,14 @@
     <div id="letterBox" class="letter-box">
       <button class="close-btn" onclick="closeLetter()">X</button>
       <div class="message">
-        <p>Hai Gausha!<br>
-        Semoga harimu penuh tawa, cinta, dan kenangan indah.<br>
-        Tetap jadi kamu yang manis dan kuat ya!</p>
+        <h3>Happy Birthday, Sayang!</h3>
+        <p>To the one who brought so much joy, laughter, and happiness into my life, the one I'm grateful for.</p>
+        <p>My dearest Gausha,</p>
+        <p>I can hardly believe that another year has passed, and here we are celebrating another birthday. I hope this day brings you all the joy and happiness that you deserve.</p>
+        <p>I want you to know how much I appreciate your friendship. You bring such a positive light into my life, and I'm so grateful for every moment we've shared together. You're kind, intelligent, and always ready to help, and I admire you so much for it.</p>
+        <p>Thank you for being such an amazing person, and for always making me smile. I hope this year brings you closer to all your dreams, and may your heart always be filled with happiness. Keep being your wonderful self!</p>
+        <p>With all my appreciation,</p>
+        <p><strong>Akbaww</strong></p>
       </div>
     </div>
   </section>
