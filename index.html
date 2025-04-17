@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Level Up Anggun</title>
+  <title>Happy Level Up Gausha</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
 
@@ -75,10 +75,12 @@
 
     .gift {
       background-color: #d3d3d3; /* abu-abu */
+      border-radius: 10px;
     }
 
     .letter {
       background-color: #fff9c4; /* kuning terang */
+      border-radius: 10px;
     }
 
     .letter-box {
@@ -114,7 +116,7 @@
       background: #c1355b;
     }
 
-    .message {
+    .letter-box .message {
       opacity: 0;
       padding: 20px;
       text-align: center;
@@ -131,6 +133,19 @@
       font-size: 1rem;
       color: #333;
     }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .choices {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .choice {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -140,7 +155,7 @@
 
   <!-- Section 1: Intro -->
   <section id="intro">
-    <h1><span>Hii Anggun,</span><br><strong>Happy Level Up <3</strong></h1>
+    <h1><span>Hii Gausha,</span><br><strong>Happy Level Up <3</strong></h1>
     <img src="https://i.imgur.com/aO5qCLs.png" class="flower" alt="Bunga">
     <p>Scroll ke bawah yaa...</p>
   </section>
@@ -163,9 +178,9 @@
     <div id="letterBox" class="letter-box">
       <button class="close-btn" onclick="closeLetter()">X</button>
       <div class="message">
-        <p>Hai Anggunnnnnnnnnnnnn!<br>
+        <p>Hai Gausha!<br>
         Semoga harimu penuh tawa, cinta, dan kenangan indah.<br>
-        Tetap jadi kamu yang manis dan kuat yawww!</p>
+        Tetap jadi kamu yang manis dan kuat ya!</p>
       </div>
     </div>
   </section>
