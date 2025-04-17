@@ -51,41 +51,49 @@
       50% { transform: translateY(10px); }
     }
 
+    
+    
+
     .choices {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      width: 100%;
-      max-width: 800px;
-      margin-top: 40px;
-    }
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 800px;
+  margin-top: 40px;
+  gap: 20px;
+}
 
-    .choice {
-      width: 40%;
-      max-width: 200px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      position: relative;
-    }
+.choice {
+  width: 45%;
+  max-width: 280px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 30px 20px;
+  border-radius: 15px;
+  text-align: center;
+  background: #eee;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-    .choice:hover {
-      transform: scale(1.05);
-    }
+.choice:hover {
+  transform: scale(1.05);
+}
 
-    .gift {
-      background-image: url('https://i.imgur.com/LAcEu2G.png');
-      background-size: cover;
-      background-position: center;
-    }
+.choice .icon {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
 
-    .letter {
-      background-image: url('https://i.imgur.com/kGI1QCZ.png');
-      background-size: cover;
-      background-position: center;
-    }
+.gift {
+  background-color: #f0f0f0; /* abu-abu muda */
+}
+
+.letter {
+  background-color: #fff7cc; /* kuning pastel */
+}
+    
 
     .letter-box {
       margin-top: 50px;
@@ -173,15 +181,22 @@
 
   <!-- Section 2: Pilihan -->
   <section id="choose">
-    <h2>Pilih salah satu ya</h2>
+    <h2>Pilih Satu Satu yawww!!</h2>
     <div class="choices">
-      <div class="choice gift" onclick="openGift()">
-        <p><strong>Open Kado</strong></p>
-      </div>
-      <div class="choice letter" onclick="openLetter()">
-        <p><strong>Open Surat</strong></p>
-      </div>
+  <div class="choice gift" onclick="openGift()">
+    <div class="inner">
+      <img src="https://i.imgur.com/LAcEu2G.png" alt="Gift" class="icon">
+      <p><strong>Click to Open</strong></p>
     </div>
+  </div>
+  <div class="choice letter" onclick="openLetter()">
+    <div class="inner">
+      <img src="https://i.imgur.com/kGI1QCZ.png" alt="Letter" class="icon">
+      <p><strong>Read It</strong></p>
+    </div>
+  </div>
+    </div>
+    
 
     <!-- Surat -->
     <div id="letterBox" class="letter-box">
