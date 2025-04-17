@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Anggun!</title>
+  <title>Happy Birthday Gausha!</title>
   <style>
     * {
       margin: 0;
@@ -14,22 +14,18 @@
 
     body {
       background: linear-gradient(to bottom right, #ffe4e1, #fff);
-      text-align: center;
       color: #d6336c;
-      overflow-x: hidden;
-      padding: 20px;
+      scroll-behavior: smooth;
     }
 
-    .page {
-      display: none;
+    .section {
       min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-    }
-
-    .active {
-      display: flex;
+      text-align: center;
     }
 
     h1, h2 {
@@ -38,15 +34,18 @@
 
     p {
       font-size: 1.2rem;
-      margin-bottom: 20px;
       color: #444;
+      margin-bottom: 20px;
+    }
+
+    img {
+      max-width: 250px;
+      height: auto;
+      margin-bottom: 20px;
     }
 
     .clickable {
-      width: 220px;
       cursor: pointer;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
     }
 
@@ -55,90 +54,60 @@
     }
 
     .flower {
-      width: 150px;
-      margin-top: 20px;
-      transition: all 1s ease;
+      width: 200px;
+      animation: float 4s ease-in-out infinite;
     }
 
-    .flower.fall {
-      transform: translateY(300px) rotate(30deg);
-      opacity: 0.5;
-    }
-
-    button {
-      margin-top: 25px;
-      padding: 12px 24px;
-      background: #ff6b9f;
-      border: none;
-      color: white;
-      font-size: 1rem;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background: #ff4d89;
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(15px); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Music -->
+  <!-- Musik -->
   <audio id="bg-music" src="https://audio.jukehost.co.uk/lAn6MreyCUC9AZmrpet5TOg6pfxn5Qx1" autoplay loop></audio>
 
-  <!-- Page 1: Intro -->
-  <div class="page active" id="intro">
-    <h1>Hii Anggun,<br>Happy Birthdayyy!</h1>
-    <img src="https://i.imgur.com/GMpUzzO.png" class="flower" id="flower">
-    <button onclick="showPage('letter')">Lanjut</button>
-  </div>
+  <!-- Section 1: Intro -->
+  <section class="section" id="intro">
+    <h1>Hii Gausha,<br>Happy Birthday!</h1>
+    <img src="https://i.imgur.com/aO5qCLs.png" class="flower" alt="Bunga">
+    <p>Scroll ke bawah yaa...</p>
+  </section>
 
-  <!-- Page 2: Surat -->
-  <div class="page" id="letter">
-    <h2>Surat Ulang Tahun</h2>
-    <p>Klik gambar untuk membaca surat</p>
-    <img src="https://i.imgur.com/l9fQdoT.jpeg" class="clickable" onclick="showPage('letterContent')">
-  </div>
+  <!-- Section 2: Surat -->
+  <section class="section" id="letter">
+    <h2>Surat untukmu</h2>
+    <p>Klik gambar ini ya:</p>
+    <img src="https://i.imgur.com/kGI1QCZ.png" alt="Surat" class="clickable" onclick="toggleLetter()">
+    <p id="letterText" style="display:none;">
+      Semoga hari ini penuh kebahagiaan dan tawa.  
+      Jangan lupa selalu jadi versi terbaik dari dirimu.  
+      You deserve all the love in the world.
+    </p>
+  </section>
 
-  <!-- Page 3: Isi Surat -->
-  <div class="page" id="letterContent">
-    <h2>Isi Surat</h2>
-    <p>Semoga hari ini penuh kebahagiaan dan cinta.<br>Tetap jadi pribadi yang luar biasa ya!</p>
-    <button onclick="showPage('gift')">Buka Kado 🎁</button>
-  </div>
-
-  <!-- Page 4: Kado -->
-  <div class="page" id="gift">
-    <h2>Kado untuk Kamu</h2>
-    <p>Klik gambar untuk membuka kado</p>
-    <img src="https://i.imgur.com/oo5Y38x.png" class="clickable" onclick="openGift()">
-  </div>
+  <!-- Section 3: Kado -->
+  <section class="section" id="gift">
+    <h2>Kado Spesial</h2>
+    <p>Klik gambar kado ini untuk membuka hadiah:</p>
+    <a href="https://gifft.me/o/d/jyj49w1or5uc5n3dg3fowu4n" target="_blank">
+      <img src="https://i.imgur.com/LAcEu2G.png" alt="Kado" class="clickable">
+    </a>
+  </section>
 
   <script>
-    function showPage(id) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-
-      const music = document.getElementById("bg-music");
-      music.volume = 0.5;
-      music.play().catch(() => {
-        document.addEventListener("click", () => music.play(), { once: true });
-      });
-    }
-
-    function openGift() {
-      window.location.href = "https://gifft.me/o/d/jyj49w1or5uc5n3dg3fowu4n";
-    }
-
-    // Bunga jatuh
-    window.addEventListener("scroll", () => {
-      const flower = document.getElementById("flower");
-      if (window.scrollY > 30) {
-        flower.classList.add("fall");
-      } else {
-        flower.classList.remove("fall");
-      }
+    const music = document.getElementById("bg-music");
+    music.volume = 0.5;
+    music.play().catch(() => {
+      document.addEventListener("click", () => music.play(), { once: true });
     });
+
+    function toggleLetter() {
+      const letterText = document.getElementById("letterText");
+      letterText.style.display = letterText.style.display === "none" ? "block" : "none";
+    }
   </script>
 
 </body>
