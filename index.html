@@ -2,41 +2,267 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>For Anggun</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Level Up Gausha</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom right, #fff0f5, #ffe4e1);
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h1, h2 {
+      color: #d6336c;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    h1 span {
+      font-weight: bold;
+    }
+
+    .flower {
+      width: 180px;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    .choices {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 800px;
+      margin-top: 40px;
+    }
+
+    .choice {
+      width: 40%;
+      max-width: 200px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+    }
+
+    .choice:hover {
+      transform: scale(1.05);
+    }
+
+    .gift {
+      background-image: url('https://i.imgur.com/LAcEu2G.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .letter {
+      background-image: url('https://i.imgur.com/kGI1QCZ.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .letter-box {
+      margin-top: 50px;
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      max-width: 500px;
+      height: 400px;
+      background: #fbe9e7;
+      border: 2px solid #d6336c;
+      border-radius: 10px;
+      z-index: 1000;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .letter-box .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .letter-box .close-btn:hover {
+      background: #c1355b;
+    }
+
+    .letter-box .message {
+      opacity: 0;
+      padding: 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #5d2c2c;
+      transition: opacity 1.5s ease-in-out;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    .letter-box.open .message {
+      opacity: 1;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Responsiveness */
+    @media (max-width: 768px) {
+      .choices {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .choice {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="hero">
-    <h1><strong>Hi Gausha,</strong> <br><strong>Happy Level Up &lt;3</strong></h1>
-  </div>
 
-  <div class="section">
-    <div class="card letter" onclick="openLetter()">
-      <img src="https://i.imgur.com/kGI1QCZ.png" alt="Letter">
-      <button>Read It</button>
-    </div>
-    <div class="card gift" onclick="window.location.href='https://gifft.me/o/d/jyj49w1or5uc5n3dg3fowu4n'">
-      <img src="https://i.imgur.com/LAcEu2G.png" alt="Gift">
-      <button>Click to Open</button>
-    </div>
-  </div>
+  <!-- Musik -->
+  <audio id="bg-music" src="https://audio.jukehost.co.uk/33AmV0m7HW3PWAvbp6TUWKZHj00fwMke" autoplay loop></audio>
 
-  <!-- Modal Surat -->
-  <div id="letterModal" class="modal">
-    <div class="modal-content letter-box">
-      <span class="close" onclick="closeLetter()">&times;</span>
-      <div class="letter-header"><strong>Happy Level Up, Gausha!</strong></div>
-      <div class="letter-body">
-        <p>Dear Anggun,</p>
-        <p>Semoga ulang tahunmu kali ini membawa banyak senyuman dan momen indah. Terima kasih udah jadi teman yang selalu baik, ceria, dan suportif.</p>
-        <p>Meski kita bukan siapa-siapa, aku tetap berharap semoga hubungan kita makin erat. Aku doakan semua cita-citamu tercapai dan kamu selalu dikelilingi oleh orang-orang yang tulus.</p>
-        <p>Nikmati hari spesialmu ya, Gausha. Jangan lupa makan kue dan tersenyum terus!</p>
-        <p style="text-align: right;">- Akbaww</p>
+  <!-- Section 1: Intro -->
+  <section id="intro">
+    <h1><span>Hii Gausha,</span><br><strong>Happy Level Up <3</strong></h1>
+    <img src="https://i.imgur.com/aO5qCLs.png" class="flower" alt="Bunga">
+    <p>Scroll ke bawah yaa...</p>
+  </section>
+
+  <!-- Section 2: Pilihan -->
+  <section id="choose">
+    <h2>Pilih salah satu ya</h2>
+    <div class="choices">
+      <div class="choice gift" onclick="openGift()">
+        <p><strong>Open Kado</strong></p>
+      </div>
+      <div class="choice letter" onclick="openLetter()">
+        <p><strong>Open Surat</strong></p>
       </div>
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <!-- Surat -->
+    <div id="letterBox" class="letter-box">
+      <button class="close-btn" onclick="closeLetter()">X</button>
+      <div class="message">
+        <div class="letter-header"><strong>Happy Level Up, Gausha!</strong></div>
+        <div class="letter-body">
+          <p>Dear Anggun,</p>
+          <p>
+            Semoga ulang tahunmu kali ini membawa banyak senyuman dan momen indah. 
+            Terima kasih udah jadi teman yang selalu baik, ceria, dan suportif.
+          </p>
+          <p>
+            Meski kita bukan siapa-siapa, aku tetap berharap semoga hubungan kita makin erat. 
+            Aku doakan semua cita-citamu tercapai dan kamu selalu dikelilingi oleh orang-orang yang tulus.
+          </p>
+          <p>
+            Nikmati hari spesialmu ya, Gausha. Jangan lupa makan dan tersenyum terus!
+          </p>
+          <p style="text-align: right;">- Akbaww</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Petal Fall -->
+  <script src="https://cdn.jsdelivr.net/gh/lokesh-coder/petal-fall@master/dist/petal-fall.min.js"></script>
+
+  <script>
+    // Music autoplay fallback
+    const music = document.getElementById("bg-music");
+    music.volume = 0.5;
+    music.play().catch(() => {
+      document.addEventListener("click", () => music.play(), { once: true });
+    });
+
+    // Scroll trigger bunga jatuh
+    window.addEventListener("scroll", () => {
+      const intro = document.getElementById("intro");
+      const rect = intro.getBoundingClientRect();
+
+      if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+        if (!window.petalsStarted) {
+          startPetals();
+          window.petalsStarted = true;
+        }
+      }
+    });
+
+    function startPetals() {
+      new PetalFall({
+        image: 'https://i.imgur.com/aO5qCLs.png', // bunga transparan
+        count: 20,
+        zIndex: 999,
+        speed: 1.2
+      });
+    }
+
+    // Buka surat
+    function openLetter() {
+      const box = document.getElementById("letterBox");
+      box.style.display = "block";
+      setTimeout(() => {
+        box.classList.add("open");
+      }, 300);
+    }
+
+    // Menutup surat
+    function closeLetter() {
+      const box = document.getElementById("letterBox");
+      box.classList.remove("open");
+      setTimeout(() => {
+        box.style.display = "none";
+      }, 300);
+    }
+
+    // Buka kado
+    function openGift() {
+      window.open("https://gifft.me/o/d/jyj49w1or5uc5n3dg3fowu4n", "_blank");
+    }
+  </script>
+
 </body>
 </html>
