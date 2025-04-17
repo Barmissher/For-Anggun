@@ -56,24 +56,21 @@
 
     .choices {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 800px;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
   margin-top: 40px;
-  gap: 20px;
 }
 
 .choice {
-  width: 45%;
-  max-width: 280px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+  width: 90%;
+  max-width: 500px;
   padding: 30px 20px;
   border-radius: 15px;
   text-align: center;
-  background: #eee;
+  cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .choice:hover {
@@ -86,13 +83,14 @@
   margin-bottom: 10px;
 }
 
-.gift {
-  background-color: #f0f0f0; /* abu-abu muda */
-}
-
 .letter {
   background-color: #fff7cc; /* kuning pastel */
 }
+
+.gift {
+  background-color: #f0f0f0; /* abu-abu muda */
+}
+    
     
 
     .letter-box {
@@ -183,19 +181,20 @@
   <section id="choose">
     <h2>Pilih Satu Satu yawww!!</h2>
     <div class="choices">
-  <div class="choice gift" onclick="openGift()">
-    <div class="inner">
-      <img src="https://i.imgur.com/LAcEu2G.png" alt="Gift" class="icon">
-      <p><strong>Click to Open</strong></p>
-    </div>
-  </div>
   <div class="choice letter" onclick="openLetter()">
     <div class="inner">
       <img src="https://i.imgur.com/kGI1QCZ.png" alt="Letter" class="icon">
       <p><strong>Read It</strong></p>
     </div>
   </div>
+  <div class="choice gift" onclick="openGift()">
+    <div class="inner">
+      <img src="https://i.imgur.com/LAcEu2G.png" alt="Gift" class="icon">
+      <p><strong>Click to Open</strong></p>
     </div>
+  </div>
+    </div>
+    
     
 
     <!-- Surat -->
